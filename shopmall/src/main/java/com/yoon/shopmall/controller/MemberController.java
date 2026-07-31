@@ -17,7 +17,7 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping("/signup")
-    public ResponseEntity<Long> signuUp(@RequestBody MemberSignUpRequest request) {
+    public ResponseEntity<Long> signUp(@RequestBody MemberSignUpRequest request) {
         Long id = memberService.signUp(request.getEmail(), request.getPassword(), request.getNickname());
         return ResponseEntity.ok(id);
     }

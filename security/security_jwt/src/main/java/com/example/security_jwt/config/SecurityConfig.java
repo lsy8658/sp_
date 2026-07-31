@@ -29,6 +29,13 @@ public class SecurityConfig {
         http.sessionManagement(session ->
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
+        // 기본 로그인
+        http.formLogin(login -> login.disable());
+
         return http.build();
     }
 }
+
+/*
+    STATELESS는 세션을 생성하지도 않고 사용하지도 않는다는 뜻입니다.
+ */

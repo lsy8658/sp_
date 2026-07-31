@@ -12,6 +12,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
-
 server:
   port: 8080
+jwt:
+  secret: my-super-secret-key-hwt-lsy-5757
