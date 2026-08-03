@@ -1,4 +1,4 @@
-package com.yoon.shopmall.domain_or_entity;
+package com.yoon.shopmall.domain;
 
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -28,6 +28,13 @@ public class Product {
 
     @Builder
     public Product(String name, int price, int stock, String description) {
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+        this.description = description;
+    }
+
+    public void update(String name, int price, int stock, String description) {
         this.name = name;
         this.price = price;
         this.stock = stock;
