@@ -2,6 +2,7 @@ package com.yoon.shopmall.controller;
 
 import com.yoon.shopmall.dto.OrderRequest;
 import com.yoon.shopmall.service.OrderService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +17,7 @@ public class OrderController {
     private final OrderService orderService;
 
     @PostMapping
-    public ResponseEntity<Long> createOrder(@RequestBody OrderRequest request) {
+    public ResponseEntity<Long> createOrder(@Valid @RequestBody OrderRequest request) {
         Long orderId = orderService.createOrder(
                 request.getMemberId(),
                 request.getProductId(),

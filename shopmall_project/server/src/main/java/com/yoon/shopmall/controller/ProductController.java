@@ -3,6 +3,7 @@ package com.yoon.shopmall.controller;
 import com.yoon.shopmall.domain.Product;
 import com.yoon.shopmall.dto.ProductRegisterRequest;
 import com.yoon.shopmall.service.ProductService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class ProductController {
     private final ProductService productService;
 
     @PostMapping
-    public ResponseEntity<Long> register(@RequestBody ProductRegisterRequest request) {
+    public ResponseEntity<Long> register(@Valid @RequestBody ProductRegisterRequest request) {
         Long id = productService.register(request.getName(), request.getPrice(),
                 request.getStock(), request.getDescription());
         return ResponseEntity.ok(id);
@@ -37,7 +38,7 @@ public class ProductController {
     @PutMapping("/{id}")
     public ResponseEntity<Void> update(
             @PathVariable("id") Long id,
-            @RequestBody ProductRegisterRequest request
+            @Valid @RequestBody ProductRegisterRequest request
     ) {
         productService.update(
                 id,
