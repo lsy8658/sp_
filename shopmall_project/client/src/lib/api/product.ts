@@ -12,3 +12,14 @@ export const createProduct = async (
   const res = await api.post<number>("/api/product", data);
   return res.data;
 };
+
+export const updateProduct = async (
+  id: number,
+  data: Omit<Product, "id">,
+): Promise<void> => {
+  await api.put(`/api/product/${id}`, data);
+};
+
+export const deleteProduct = async (id: number): Promise<void> => {
+  await api.delete(`/api/product/${id}`);
+};
