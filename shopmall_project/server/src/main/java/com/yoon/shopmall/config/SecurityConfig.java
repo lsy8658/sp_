@@ -46,12 +46,11 @@ public class SecurityConfig {
                         auth.requestMatchers(
                                         "/api/members/signup",
                                         "/api/members/login",
-                                        "/api/product",
-                                        "/api/product/**",
-                                        "/api/order",
-                                        "/api/order/**",
-                                        "/api/review",
-                                        "/api/review/**"
+                                        "/api/artists",
+                                        "/api/artists/**",
+                                        "/api/concerts",
+                                        "/api/concerts/**",
+                                        "/api/seats/**"
                                 ).permitAll()
                                 .anyRequest().authenticated()
                 )

@@ -20,9 +20,10 @@ public class JwtProvider {
         this.key = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
     }
 
-    public String createToken (String email) {
+    public String createToken (Long memberId,String email) {
         return Jwts.builder()
                 .subject(email)
+                .claim("memberId", memberId)
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + expireTime))
                 .signWith(key)
@@ -36,5 +37,13 @@ public class JwtProvider {
                 .parseSignedClaims(token)
                 .getPayload()
                 .getSubject();
+    }
+    public Long getMemberId(String token) {
+        return Jwts.parser()
+                .verifyWith(key)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload()
+                .get("memberId", Long.class);
     }
 }

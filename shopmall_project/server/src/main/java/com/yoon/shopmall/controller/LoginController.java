@@ -20,7 +20,7 @@ public class LoginController {
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginRequest request) {
         Member member = loginService.login(request.getEmail(), request.getPassword());
-        String token = jwtProvider.createToken(member.getEmail());
+        String token = jwtProvider.createToken(member.getId(), member.getEmail());
         return ResponseEntity.ok(token);
     }
 }
